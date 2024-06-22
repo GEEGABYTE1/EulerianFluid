@@ -1,7 +1,9 @@
 
 # Eulerian Fluid Simulation
 
-<div style="width:100%;height:0;padding-bottom:49%;position:relative;"><iframe src="https://giphy.com/embed/SSdqjTaI8A6YDrB4BL" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/SSdqjTaI8A6YDrB4BL">via GIPHY</a></p>
+<div align="center">
+  <iframe width="560" height="315" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdzhwaWh4Y3ZoMTNkcDNiYnd4YzI3amVzc2pvN3A5aThxN2xpcmNqciZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/SSdqjTaI8A6YDrB4BL/giphy.gif" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+</div>
 
 Simple Fluid Simulation modelling behaviour, pressure,  and velocity in the following:
 - Wind Tunnel
