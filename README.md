@@ -38,12 +38,10 @@ which is represented in a collcated grid. It should be noted that velocity vecto
 
 To model real behaviour, we need to add gravity. To do so, we do the following:
 
-```math
-for all i,j 
-```
 
-```math
 
-    v_i_j = v_i_j + \Delta t \cdot g 
+```sudo
+    for all i,j:
+     v_i_j = v_i_j + \Delta t \cdot g 
 ```
-where $$g$$=gravitational constant and $$\Delta t$$ is the timestep.
+where $g$=gravitational constant and $\Delta t$ is the timestep.
