@@ -2,7 +2,7 @@
 # Eulerian Fluid Simulation
 
 <div align="center">
-  <iframe width="560" height="315" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdzhwaWh4Y3ZoMTNkcDNiYnd4YzI3amVzc2pvN3A5aThxN2xpcmNqciZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/SSdqjTaI8A6YDrB4BL/giphy.gif" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+  <img src="https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif" width="40" height="40" />
 </div>
 
 Simple Fluid Simulation modelling behaviour, pressure,  and velocity in the following:
