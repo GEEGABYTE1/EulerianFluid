@@ -24,10 +24,13 @@ Zero viscosity, which allows a good approximation for gas and water.
 
  Velocity will be represented by a 2D vector:  
  
- $$\textbf{v} = \begin{bmatrix} u \\ v \end{bmatrix}$$
- 
- ,
-which is represented in a collcated grid. It should be noted that velocity vectors are stored in the center of each grid.
+ ```math
+ \textbf{v} = \begin{bmatrix} u \\ v \end{bmatrix}$$
+ ```
+
+
+
+,which is represented in a collcated grid. It should be noted that velocity vectors are stored in the center of each grid.
 
 
 
