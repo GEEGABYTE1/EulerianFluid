@@ -84,13 +84,13 @@
 			this.numX = numX + 2; 
 			this.numY = numY + 2;
 			this.numCells = this.numX * this.numY;
-			this.h = h;
+			this.h = h; // height of grid cell
 			this.u = new Float32Array(this.numCells);
-			this.v = new Float32Array(this.numCells);
+			this.v = new Float32Array(this.numCells); // velocity vector
 			this.newU = new Float32Array(this.numCells);
 			this.newV = new Float32Array(this.numCells);
 			this.p = new Float32Array(this.numCells);
-			this.s = new Float32Array(this.numCells);
+			this.s = new Float32Array(this.numCells); // smoke field vars
 			this.m = new Float32Array(this.numCells);
 			this.newM = new Float32Array(this.numCells);
 			this.m.fill(1.0)
@@ -102,7 +102,7 @@
 			for (var i = 1; i < this.numX; i++) {
 				for (var j = 1; j < this.numY-1; j++) {
 					if (this.s[i*n + j] != 0.0 && this.s[i*n + j-1] != 0.0)
-						this.v[i*n + j] += gravity * dt;
+						this.v[i*n + j] += gravity * dt; //adding gravity * timestep to all cells n
 				}	 
 			}
 		}
@@ -120,7 +120,7 @@
 						if (this.s[i*n + j] == 0.0)
 							continue;
 
-						var s = this.s[i*n + j];
+						var s = this.s[i*n + j]; // summing all s values
 						var sx0 = this.s[(i-1)*n + j];
 						var sx1 = this.s[(i+1)*n + j];
 						var sy0 = this.s[i*n + j-1];
@@ -129,14 +129,14 @@
 						if (s == 0.0)
 							continue;
 
-						var div = this.u[(i+1)*n + j] - this.u[i*n + j] + 
+						var div = this.u[(i+1)*n + j] - this.u[i*n + j] +  //divergence calculation
 							this.v[i*n + j+1] - this.v[i*n + j];
 
-						var p = -div / s;
+						var p = -div / s; // pressure calculation
 						p *= scene.overRelaxation;
 						this.p[i*n + j] += cp * p;
 
-						this.u[i*n + j] -= sx0 * p;
+						this.u[i*n + j] -= sx0 * p; // prev vector correction
 						this.u[(i+1)*n + j] += sx1 * p;
 						this.v[i*n + j] -= sy0 * p;
 						this.v[i*n + j+1] += sy1 * p;
@@ -232,18 +232,18 @@
 						var y = j*h + h2;
 						var u = this.u[i*n + j];
 						var v = this.avgV(i, j);
-//						var v = this.sampleField(x,y, V_FIELD);
+//						var v = this.sampleField(x,y, V_FIELD); // performing interpolation backwards
 						x = x - dt*u;
 						y = y - dt*v;
 						u = this.sampleField(x,y, U_FIELD);
 						this.newU[i*n + j] = u;
 					}
 					// v component
-					if (this.s[i*n + j] != 0.0 && this.s[i*n + j-1] != 0.0 && i < this.numX - 1) {
+					if (this.s[i*n + j] != 0.0 && this.s[i*n + j-1] != 0.0 && i < this.numX - 1) { 
 						var x = i*h + h2;
 						var y = j*h;
 						var u = this.avgU(i, j);
-//						var u = this.sampleField(x,y, U_FIELD);
+//						var u = this.sampleField(x,y, U_FIELD); //interpolating backwards
 						var v = this.v[i*n + j];
 						x = x - dt*u;
 						y = y - dt*v;
