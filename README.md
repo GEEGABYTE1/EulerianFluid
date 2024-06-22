@@ -22,7 +22,7 @@ Zero viscosity, which allows a good approximation for gas and water.
 
  The simulation uses the Grid Method as introduced by Euler. We essentially model a fluid as a velocity field on a Grid. 
 
- Velocity will be represented by a 2D vector:  $  \textbf{v} = \begin{bmatrix} u \\ v \end{bmatrix} $,
+ Velocity will be represented by a 2D vector:  $$\textbf{v} = \begin{bmatrix} u \\ v \end{bmatrix}$$,
 which is represented in a collcated grid. It should be noted that velocity vectors are stored in the center of each grid.
 
 
