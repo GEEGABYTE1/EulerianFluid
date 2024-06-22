@@ -30,7 +30,20 @@ Zero viscosity, which allows a good approximation for gas and water.
 
 
 
-,which is represented in a collcated grid. It should be noted that velocity vectors are stored in the center of each grid.
+which is represented in a collcated grid. It should be noted that velocity vectors are stored in the center of each grid.
 
 
 
+### Modifying Velocities to model real behaviour (i.e., adding gravity)
+
+To model real behaviour, we need to add gravity. To do so, we do the following:
+
+```math
+for all i,j 
+```
+
+```math
+
+    v_i_j = v_i_j + \Delta t \cdot g 
+```
+where $$g$$=gravitational constant and $$\Delta t$$ is the timestep.
