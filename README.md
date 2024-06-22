@@ -45,3 +45,8 @@ To model real behaviour, we need to add gravity. To do so, we do the following:
      v_i_j = v_i_j + \Delta t \cdot g 
 ```
 where $g$=gravitational constant and $\Delta t$ is the timestep.
+
+
+<p align="center">
+<img src="./content/image1.png" alt="Image 1" style="width:20%; border:0;">
+</p>
