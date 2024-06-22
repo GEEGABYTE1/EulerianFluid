@@ -64,8 +64,11 @@ Note that if all velocity vectors are directed toward the center of the cell, th
 Even if we change one velocity vector, this is not an ideal representation of a fluid since it cannot do that in real life. Therefore, for fluids, all velocities must be pushed by the same amount. Therefore, to make divergence equal to 0, we set:
 
 $$d = u_{i+1, j} - u_{i, j} + v_{i,j+1} - v_{i,j}$$
+
 $$u_{i+1,j}=u_{i+1,j}-\frac{d}{3}$$
+
 $$v_{i,j}=v_{i,j}+\frac{d}{3}$$
+
 $$v_{i,j+1}=v_{i,j+1}-\frac{d}{3}$$
 
 Note for a wall, $u_{i,j}$ is 0. For moving object, or turbine pushing fluid (i.e., wind tunnel), $u_{i,j}$ is not zero.
@@ -73,9 +76,13 @@ Note for a wall, $u_{i,j}$ is 0. For moving object, or turbine pushing fluid (i.
 For a more general case, the simulation stores a scalar value $s$ in each cell, where $s=0$ for walls and obstacles, and $s=1$ for fluid cells. 
 
 $$s=s_{i+1,j} + s_{i-1,j}+s_{i,j+1} + s_{i,j-1}$$
+
 $$u_{i+1,j}=u_{i+1,j}-d\frac{s_{i+1,j}}{s}$$
+
 $$ u_{i,j}=u_{i,j}+d\frac{s_{i-1,j}}{s}$$
+
 $$v_{i,j}=v_{i,j}+d\frac{s_{i,j-1}}{s}$$
+
 $$v_{i,j+1}=v_{i,j+1}-d\frac{s_{i,j+1}}{s}$$
 
 To run across all cells in grid, we loop through each cell. This method is called *Gauss-Seidel Method*. But we must also consider that on the boundary of the grid, we access cells that are outside of the grid. To fix this, the simulator is set to:
