@@ -1,6 +1,13 @@
 
 # Eulerian Fluid Simulation
 
+<div align="center">
+  <video width="320" height="240" controls loop>
+    <source src="./content/video1.mov" type="video/mov">
+    Your browser does not support the video tag.
+  </video>
+</div>
+
 Simple Fluid Simulation modelling behaviour, pressure,  and velocity in the following:
 - Wind Tunnel
 - Hires Tunnel 
@@ -34,7 +41,7 @@ which is represented in a collcated grid. It should be noted that velocity vecto
 
 
 
-### Modifying Velocities to model real behaviour (i.e., adding gravity)
+### modifying velocities to model real behaviour (i.e., adding gravity)
 
 To model real behaviour, we need to add gravity. To do so, we do the following:
 
@@ -46,7 +53,7 @@ To model real behaviour, we need to add gravity. To do so, we do the following:
 ```
 where $g$=gravitational constant and $\Delta t$ is the timestep.
 
-### Making the Fluid Incompressible (projection)
+### making the fluid incompressible (projection)
 To make fluid incompressible, we need to introduce the idea of divergence (i.e., total outflow). Divergence is proportional to the amount of fluid that leaves the cell in a timestep. 
 
 The simulator sums up each vector in the cell. But it needs to be careful for three cases:
@@ -91,7 +98,7 @@ To run across all cells in grid, we loop through each cell. This method is calle
 - Copy neighbouring values that are inside the grid
 
 
-#### Measuring the Pressure
+#### measuring the pressure
 
 To measure the pressure of a fluid, the simulator applies a similar process:
 - 1) For each cell in the grid, the pressure is set to $p_{i,j}=0$.
@@ -102,7 +109,7 @@ $$ p_{i,j}=p_{i,j}+\frac{d}{s} \cdot \frac{\rho h }{\Delta t} $$
 
 where $p_{i,j}$ is physical pressure, $\rho$ is density, $h$ is grid spacing, and $\Delta t$ is time-step.
 
-#### Overrelaxation
+#### overrelaxation
 
 The Gauss-Seidel method does require more iterations to converge which may take a very long time. We can boost this spede by using Overrelaxation. 
 
@@ -110,7 +117,7 @@ The simulator multiplies the divergence by a constant $c$ by some scalar 1 < $c$
 
 $$ d = c(u_{i+1,j} - u_{i,j} + v_{i, j+1} - v_{i,j}) $$
 
-### Moving the Velocity Field 
+### moving the velocity field 
 In a fluid, the velocity state is carried by the particles. However, although particles move, grid cells are static, which requires us to move the velocity values on the grid. 
 
 The simulator does this through a method called *Semi-Lagrangian Advection*:
@@ -120,7 +127,7 @@ The simulator does this through a method called *Semi-Lagrangian Advection*:
 <img src="./content/image3.png" alt="Image 1" style="width:20%; border:0;">
 </p>
 
-The simulator asks itself, which fluid "particle" moved to the location where $u$ is stored. The simulator then sets the new velocity $u_{t+\Delta t} to the velocity $u_{t}$ at the previous position. 
+The simulator asks itself, which fluid "particle" moved to the location where $u$ is stored. The simulator then sets the new velocity $u_{t+\Delta t}$ to the velocity $u_{t}$ at the previous position. 
 
 To compute the previous location, the simulator follows a series of steps:
 - 1) Computes $v$ at position $x$ in the grid where $u$ is stored.
